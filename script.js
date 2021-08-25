@@ -2,6 +2,21 @@ const shortenBtn = document.querySelector('.shorten-btn');
 const urlInput = document.querySelector('#url');
 let shortLink;
 
+function createList(input, shortened) {
+    const history = document.querySelector('.history');
+    const inputLink = document.createElement('p');
+    inputLink.classList.add('link');
+    inputLink.textContent = input;
+    history.appendChild(inputLink);
+    const shortenedLink = document.createElement('p');
+    shortenedLink.classList.add('shortened');
+    shortenedLink.textContent = shortened;
+    history.appendChild(shortenedLink);
+    const button = document.createElement('button');
+    button.classList.add('button');
+    button.textContent = 'Copy';
+    history.appendChild(button);
+}
 
 async function inquiry(url) {
     const response = await fetch(url);
@@ -21,29 +36,26 @@ function shortenLink(e) {
 }
 
 function storageIt() {
+    let linksArray = localStorage.getItem('links') ?
+        JSON.parse(localStorage.getItem('links')) : [];
+    localStorage.setItem('links', JSON.stringify(linksArray));
+
     const inputValue = urlInput.value;
-    console.log(inputValue);
-    console.log('skrocony link', shortLink);
-    if (localStorage) {
-        // Store data
-        localStorage.setItem(inputValue, shortLink);
+    linksArray.push({
+        link: inputValue,
+        shortened: shortLink,
+    })
+    localStorage.setItem('links', JSON.stringify(linksArray))
+    const data = JSON.parse(localStorage.getItem('links'));
 
-        setTimeout(function () {
-            localStorage.getItem(shortLink);
-            //console.log(localStorage);
-            console.log("Hi, " + localStorage.getItem(shortLink));
-        }, 50);
+    //createList(inputValue, shortLink);
+    data.forEach(item => {
+        createList(item.link, item.shortened);
+    })
 
-    }
 }
-
-localStorage.clear();
-
-
-
-
-
-
 
 
 shortenBtn.addEventListener('click', shortenLink);
+
+//localStorage.clear();

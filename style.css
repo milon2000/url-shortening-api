@@ -4,11 +4,87 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+ul {
+    list-style-type: none;
+}
 
-.wrapper {
+.wrapper  {
     margin-left: auto;
     margin-right: auto;
-    max-width: 960px;
+    max-width: 1800px;
     padding-right: 10px;
     padding-left: 10px;
+}
+
+.navbar {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3% 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+.item {
+    padding-right: 35px;
+    font-size: 12px;
+    color: hsl(0, 0%, 60%);
+    font-weight: 600;
+    cursor: pointer;
+}
+.item:hover {
+    color: #000;
+}
+ .btn {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    background: hsl(180, 66%, 49%);
+    padding: 7px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+.btn:hover {
+    cursor: pointer;
+}
+.header-content {
+    width: 100%;
+    min-height: 300px;
+}
+.header-left {
+    float: left;
+    padding-left: 10%;
+    width: 50%;
+}
+.header-right {
+    float: left;
+    padding-right: 0;
+    padding-left: 40px;
+    width: 50%;
+}
+.header-right img {
+    width: 100%;
+    height: auto;
+}
+.header-title {
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 1.2;
+}
+.header-title, .header-text, .header-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.header-btn {
+    font-weight: 600;
+}
+
+.shorten-bg {
+    background-image: url('./images/bg-shorten-desktop.svg');
+    height: 50px;
+    width: 800px;
 }

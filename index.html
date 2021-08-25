@@ -19,28 +19,32 @@
   <div class="wrapper">
     <header class="header">
       <nav class="navbar">
-        <img src="./images/logo.svg" alt="Logo">
+       
         <ul class="menu menu-left">
+          <li class="item"> <img src="./images/logo.svg" alt="Logo"></li>
           <li class="item">Features</li>
           <li class="item">Pricing</li>
           <li class="item">Resources</li>
         </ul>
         <ul class="menu menu-right">
           <li class="item">Login</li>
-          <li class="item">Sign up</li>
+          <li class="item btn">Sign Up</li>
         </ul>
       </nav>
+      <div style="clear:both;"></div>
       <div class="header-content">
         <div class="header-left">
-          <h1 class="header-title">More than just shorter links</h1>
-          <p> Build your brand’s recognition and get detailed insights
+          <h1 class="header-title">More than just<br> shorter links</h1>
+          <p class="header-text"> Build your brand’s recognition and get detailed insights
             on how your links are performing.</p>
-          <button class="btn header-btn">Get Started</button>
+          <a href="#" class="btn header-btn">Get Started</a>
         </div>
         <div class="header-right">
           <img src="./images/illustration-working.svg" alt="Illustration working">
         </div>
       </div>
+      <div style="clear:both;"></div>
+     
     </header>
     <section class="shorten">
       <div class="shorten-bg">
@@ -48,6 +52,13 @@
         <label for="url"></label>
         <input type="text" id="url" name="url" placeholder="Shorten a link here...">
         <button class="shorten-btn">Shorten It</button>
+      </div>
+    </section>
+    <section class="history">
+      <div class="result">
+        <p class="link"></p>
+        <p class="shortened"></p>
+        <button class="copy">Copy</button>
       </div>
     </section>
     <div class="attribution">
