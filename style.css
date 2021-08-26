@@ -8,7 +8,7 @@ ul {
     list-style-type: none;
 }
 
-.wrapper  {
+.wrapper, .shorten  {
     margin-left: auto;
     margin-right: auto;
     max-width: 1800px;
@@ -16,10 +16,12 @@ ul {
     padding-left: 10px;
 }
 
-.navbar {
+.navbar, .shorten {
     margin-left: auto;
     margin-right: auto;
     padding: 3% 10%;
+}
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,13 +49,14 @@ ul {
     padding: 7px 20px;
     text-decoration: none;
     color: #fff;
+    font-weight: 600;
 }
 .btn:hover {
     cursor: pointer;
 }
 .header-content {
     width: 100%;
-    min-height: 300px;
+    min-height: 380px;
 }
 .header-left {
     float: left;
@@ -85,6 +88,22 @@ ul {
 
 .shorten-bg {
     background-image: url('./images/bg-shorten-desktop.svg');
-    height: 50px;
-    width: 800px;
+    background-color: hsl(257, 27%, 26%);
+    border-radius: 10px;
+    padding: 35px;
+    text-align: center;
+    background-size: cover;
+}
+input  {
+    width: 70%;    
+}
+input:focus-visible {
+    border: 2px solid hsl(0, 87%, 67%);
+}
+input:focus {
+    outline: none;
+}
+.shorten-btn, input {
+    padding: 10px;
+    border-radius: 10px;
 }

@@ -1,6 +1,17 @@
 const shortenBtn = document.querySelector('.shorten-btn');
 const urlInput = document.querySelector('#url');
 let shortLink;
+const addLink = document.querySelector('.add-link');
+const input = document.querySelector('.input');
+
+function emptyInput() {
+    console.log('dziala');
+    if (urlInput.value == '') {
+        addLink.innerHTML = 'kurwa'
+    } else {
+        addLink.innerHTML = ''
+    }
+}
 
 function createList(input, shortened) {
     const history = document.querySelector('.history');
@@ -55,7 +66,7 @@ function storageIt() {
 
 }
 
-
+input.addEventListener('onfocus', emptyInput);
 shortenBtn.addEventListener('click', shortenLink);
 
 //localStorage.clear();
