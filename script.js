@@ -3,30 +3,43 @@ const urlInput = document.querySelector('#url');
 let shortLink;
 const addLink = document.querySelector('.add-link');
 const input = document.querySelector('.input');
+const navbar = document.querySelector('.navbar-icons');
+const copy = document.querySelector('.copy-btn');
+//const shortened = document.que
 
-function emptyInput() {
-    console.log('dziala');
+
+function validateForm() {
     if (urlInput.value == '') {
-        addLink.innerHTML = 'kurwa'
+        addLink.innerHTML = 'Please add a link';
+        input.classList.add('empty-input');
     } else {
-        addLink.innerHTML = ''
+        addLink.innerHTML = '';
+        input.classList.remove('empty-input');
+        return false;
     }
 }
 
+
 function createList(input, shortened) {
-    const history = document.querySelector('.history');
+    const result = document.querySelector('.result');
+    const singleResult = document.createElement('div');
+    singleResult.classList.add('single-result');
+    result.appendChild(singleResult);
     const inputLink = document.createElement('p');
     inputLink.classList.add('link');
     inputLink.textContent = input;
-    history.appendChild(inputLink);
+    singleResult.appendChild(inputLink);
+    const output = document.createElement('div');
+    output.classList.add('output');
+    singleResult.appendChild(output);
     const shortenedLink = document.createElement('p');
     shortenedLink.classList.add('shortened');
     shortenedLink.textContent = shortened;
-    history.appendChild(shortenedLink);
+    output.appendChild(shortenedLink);
     const button = document.createElement('button');
-    button.classList.add('button');
+    button.classList.add('button', 'btn', 'copy-btn');
     button.textContent = 'Copy';
-    history.appendChild(button);
+    output.appendChild(button);
 }
 
 async function inquiry(url) {
@@ -46,6 +59,16 @@ function shortenLink(e) {
     inquiry(url);
 }
 
+function getItems() {
+    const data = JSON.parse(localStorage.getItem('links'))
+        .reverse()
+        .slice(0, 5)
+        .forEach(item => {
+            createList(item.link, item.shortened);
+        })
+
+}
+
 function storageIt() {
     let linksArray = localStorage.getItem('links') ?
         JSON.parse(localStorage.getItem('links')) : [];
@@ -56,17 +79,32 @@ function storageIt() {
         link: inputValue,
         shortened: shortLink,
     })
-    localStorage.setItem('links', JSON.stringify(linksArray))
-    const data = JSON.parse(localStorage.getItem('links'));
-
-    //createList(inputValue, shortLink);
-    data.forEach(item => {
-        createList(item.link, item.shortened);
-    })
-
+    localStorage.setItem('links', JSON.stringify(linksArray));
+    getItems();
 }
 
-input.addEventListener('onfocus', emptyInput);
+//mobile navigation
+
+
+
+function openNav() {
+    const navbarWrapper = document.querySelector('.navbar-wrapper');
+    if (!navbarWrapper.classList.contains('navbar-wrapper-visible')) {
+        navbarWrapper.classList.add('navbar-wrapper-visible')
+    } else {
+        navbarWrapper.classList.remove('navbar-wrapper-visible')
+    }
+}
+
+//copy button
+function copyInput() {
+    input.select();
+    document.execCommand("copy");
+}
+
+copy.addEventListener('click', copyInput);
+navbar.addEventListener('click', openNav);
+shortenBtn.addEventListener('click', validateForm);
 shortenBtn.addEventListener('click', shortenLink);
 
 //localStorage.clear();
